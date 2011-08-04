@@ -203,7 +203,11 @@ class OAuthRemoteApp(object):
         Usually you don't have to do that but use the :meth:`request`
         method instead.
         """
-        return oauth2.Client(self._consumer, self.get_request_token())
+        from socket import gethostname
+        if gethostname().lower() == 'mclovin':
+            import socks
+            proxy_info = httplib2.ProxyInfo(socks.PROXY_TYPE_HTTP, 'www-proxy.cs.tcd.ie', 8080)
+        return oauth2.Client(self._consumer, self.get_request_token(),proxy_info=proxy_info)
 
     def request(self, url, data=None, headers=None, format='urlencoded',
                 method='GET', content_type=None):
