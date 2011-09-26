@@ -8,9 +8,11 @@
 
     {% if tweets %}
     <h3>{{session['twitter_user']}}'s Timeline</h3>
-    <ul>
-    {% for tweet in tweets %}
-      <li><a href="http://twitter.com/{{ tweet.user.screen_name
+    <ul> 
+   {% for tweet in tweets %}
+
+      <li class='tweet'> <img src="{{tweet.user.profile_image_url}}" />
+<a href="http://twitter.com/{{ tweet.user.screen_name
 }}">{{ tweet.user.screen_name }}</a>: {{ tweet.text|urlize }}
     {% endfor %}
     </ul>
@@ -20,10 +22,13 @@
     <p>
       Sign in to view your public timeline and to tweet from this
       example application.
+	</p>
     <p>
       <a href="{{ url_for('login') }}"><img src="{{
         url_for('static', filename='sign-in.png') }}" alt="sign in"></a>
+	</p>
   {% endif %}
 
+</p>
 {% endblock %}
 
