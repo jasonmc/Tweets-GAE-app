@@ -60,7 +60,9 @@ li.tweet {
 }
 
 .tweet img {
-vertical-align: middle;
+  vertical-align: middle;
+  float: left;
+  clear: left;
 
 //display: none;
 
